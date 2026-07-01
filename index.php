@@ -26,9 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 switch ($first) {
     case 'sign':
-        // /sign/{code} — referral signup
+        // /sign/{code} or /sign (POST) — referral signup
         $view = 'sign';
         $ref_code = $segments[1] ?? '';
+        break;
+
+    case 'sign-form':
+        // /sign-form/?token=... — registration form after sign page
+        $view = 'sign-form';
+        $page_title = 'Complete Registration — ' . $COMPANY['name'];
         break;
 
     case 'walkthrough':

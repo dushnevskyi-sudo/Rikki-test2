@@ -1,130 +1,85 @@
 <?php
 /**
  * Referral signup page: /sign/{code}
- * Looks up referral code in DB, shows signup form if valid.
+ * Looks up referral code, generates token, redirects to sign-form.
  */
 
 $db = db_connect();
 $ref_code = $ref_code ?? '';
-$referral = null;
-$form_done = false;
-$form_errors = [];
+$redirect = null;
+$error = false;
 
-// Verify referral code
+// Parse from URL path or POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $ref_code = trim($_POST['ref'] ?? '');
+}
+
+// Verify referral code and generate token
 if (!empty($ref_code) && $db) {
-    $stmt = $db->prepare('SELECT id, name, project FROM users WHERE ref = ? LIMIT 1');
+    $stmt = $db->prepare('SELECT id, project FROM users WHERE ref = ? LIMIT 1');
     if ($stmt) {
         $stmt->bind_param('s', $ref_code);
         $stmt->execute();
         $result = $stmt->get_result();
         $referral = $result->fetch_assoc();
         $stmt->close();
-    }
-}
 
-// Handle POST (form submission)
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($referral) && $db) {
-    $name  = trim($_POST['name'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
-    $confirm = $_POST['confirm'] ?? '';
+        if ($referral) {
+            // Generate secure token
+            $token = bin2hex(random_bytes(25));
+            $time = date('Y-m-d H:i:s');
+            $ip = $_SERVER['REMOTE_ADDR'];
+            $sup_id = $referral['id'];
+            $project = $referral['project'];
 
-    // Honeypot
-    if (!empty($_POST['website'])) {
-        $form_done = true;
-        return;
-    }
-
-    // Validate
-    if ($name === '') $form_errors['name'] = 'Name is required.';
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $form_errors['email'] = 'Please enter a valid email.';
-    if (strlen($password) < 6) $form_errors['password'] = 'Password must be at least 6 characters.';
-    if ($password !== $confirm) $form_errors['confirm'] = 'Passwords do not match.';
-
-    if (empty($form_errors)) {
-        // Check if email already exists
-        $stmt = $db->prepare('SELECT id FROM users WHERE email = ? LIMIT 1');
-        if ($stmt) {
-            $stmt->bind_param('s', $email);
-            $stmt->execute();
-            if ($stmt->get_result()->num_rows > 0) {
-                $form_errors['email'] = 'This email is already registered.';
+            // Insert contract record
+            $stmt = $db->prepare('INSERT INTO contracts (support, project, date, token, ip) VALUES (?, ?, ?, ?, ?)');
+            if ($stmt) {
+                $stmt->bind_param('issss', $sup_id, $project, $time, $token, $ip);
+                if ($stmt->execute()) {
+                    $redirect = url('/sign-form/?token=' . $token);
+                }
+                $stmt->close();
             }
-            $stmt->close();
-        }
-    }
-
-    if (empty($form_errors)) {
-        // Insert new user
-        $hash = password_hash($password, PASSWORD_BCRYPT);
-        $stmt = $db->prepare('INSERT INTO users (name, email, password, referrer_id, project, created_at) VALUES (?, ?, ?, ?, ?, NOW())');
-        if ($stmt) {
-            $stmt->bind_param('sssis', $name, $email, $hash, $referral['id'], $referral['project']);
-            if ($stmt->execute()) {
-                $form_done = true;
-            }
-            $stmt->close();
+        } else {
+            $error = true;
         }
     }
 }
 ?>
+<?php if (!empty($redirect)): ?>
+    <script>
+        // Save token to localStorage
+        localStorage.setItem('sign_token', '<?= e($redirect) ?>');
+        const expirationDate = new Date().getTime() + (7 * 24 * 60 * 60 * 1000);
+        localStorage.setItem('sign_token_expiration', expirationDate.toString());
+        window.location.href = '<?= e($redirect) ?>';
+    </script>
+<?php else: ?>
+    <section class="page-hero">
+        <div class="container">
+            <span class="eyebrow">Join us</span>
+            <h1>Enter your support code</h1>
+            <p>You've been invited to join our network.</p>
+        </div>
+    </section>
 
-<section class="page-hero">
-    <div class="container">
-        <span class="eyebrow">Join us</span>
-        <h1>Create your account</h1>
-        <p>Welcome to our network.</p>
-    </div>
-</section>
+    <section class="section">
+        <div class="container container--narrow">
+            <?php if ($error): ?>
+                <div class="alert alert--error reveal">
+                    <?= icon('shield', 20) ?>
+                    <div><strong>Invalid code.</strong> The support code you entered is not valid. Please check and try again.</div>
+                </div>
+            <?php endif; ?>
 
-<section class="section">
-    <div class="container container--narrow">
-        <?php if (empty($referral)): ?>
-            <div class="alert alert--error reveal">
-                <?= icon('shield', 20) ?>
-                <div><strong>Invalid or expired code.</strong> This referral link is no longer valid.</div>
-            </div>
-        <?php elseif (!$db): ?>
-            <div class="alert alert--error reveal">
-                <?= icon('shield', 20) ?>
-                <div><strong>Service unavailable.</strong> Please try again later.</div>
-            </div>
-        <?php elseif ($form_done): ?>
-            <div class="alert alert--success reveal">
-                <?= icon('check', 20) ?>
-                <div><strong>Welcome!</strong> Your account has been created. You can now log in.</div>
-            </div>
-        <?php else: ?>
-            <form method="post" action="<?= url('/sign/' . e($ref_code)) ?>" class="form" novalidate>
-                <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-
+            <form method="post" action="<?= url('/sign') ?>" class="form" novalidate>
                 <div class="form__field">
-                    <label for="name">Full Name *</label>
-                    <input id="name" name="name" type="text" value="<?= e($_POST['name'] ?? '') ?>" required>
-                    <?php if (!empty($form_errors['name'])): ?><span class="form__error"><?= e($form_errors['name']) ?></span><?php endif; ?>
+                    <label for="ref">Support Code *</label>
+                    <input id="ref" name="ref" type="text" value="<?= e($_POST['ref'] ?? '') ?>" placeholder="Enter your code" required autofocus>
                 </div>
-
-                <div class="form__field">
-                    <label for="email">Email *</label>
-                    <input id="email" name="email" type="email" value="<?= e($_POST['email'] ?? '') ?>" required>
-                    <?php if (!empty($form_errors['email'])): ?><span class="form__error"><?= e($form_errors['email']) ?></span><?php endif; ?>
-                </div>
-
-                <div class="form__row">
-                    <div class="form__field">
-                        <label for="password">Password *</label>
-                        <input id="password" name="password" type="password" required>
-                        <?php if (!empty($form_errors['password'])): ?><span class="form__error"><?= e($form_errors['password']) ?></span><?php endif; ?>
-                    </div>
-                    <div class="form__field">
-                        <label for="confirm">Confirm Password *</label>
-                        <input id="confirm" name="confirm" type="password" required>
-                        <?php if (!empty($form_errors['confirm'])): ?><span class="form__error"><?= e($form_errors['confirm']) ?></span><?php endif; ?>
-                    </div>
-                </div>
-
-                <button class="btn btn--primary btn--lg" type="submit">Create Account</button>
+                <button class="btn btn--primary btn--lg" type="submit">Continue</button>
             </form>
-        <?php endif; ?>
-    </div>
-</section>
+        </div>
+    </section>
+<?php endif; ?>
