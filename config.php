@@ -57,9 +57,10 @@ $SITE = [
     'base'        => '',
     'lang'        => 'en',
     'timezone'    => 'America/Chicago',
-    // Default meta values (per-page values can override these)
-    'meta_title'  => 'Norvexa Logistics — Global Freight & Supply Chain Solutions',
-    'meta_desc'   => 'Norvexa Logistics delivers fast, reliable ocean, air, rail and road freight, warehousing and customs brokerage for businesses worldwide.',
+    // Default meta title suffix (prepended with company name: "{name} — {suffix}")
+    'meta_title_suffix' => 'Global Freight & Supply Chain Solutions',
+    // Default meta description (prepended with company name: "{name} delivers {desc}")
+    'meta_desc'   => 'fast, reliable ocean, air, rail and road freight, warehousing and customs brokerage for businesses worldwide.',
     // Google Analytics / GTM id (leave '' to disable)
     'analytics'   => '',
 ];

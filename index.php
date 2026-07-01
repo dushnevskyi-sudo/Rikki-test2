@@ -12,8 +12,8 @@ require __DIR__ . '/includes/functions.php';
 $route = current_route();
 
 // Page metadata defaults (a page file may override $page_title / $page_desc).
-$page_title = $SITE['meta_title'];
-$page_desc  = $SITE['meta_desc'];
+$page_title = $COMPANY['name'] . ' — ' . $SITE['meta_title_suffix'];
+$page_desc  = $COMPANY['name'] . ' delivers ' . $SITE['meta_desc'];
 
 // ---- Routing table --------------------------------------------------
 $segments = array_values(array_filter(explode('/', $route)));
