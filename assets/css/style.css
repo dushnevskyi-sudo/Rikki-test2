@@ -314,6 +314,11 @@ label { display: block; font-family: var(--display); font-weight: 500; font-size
 .faq-cta { text-align: center; margin-top: 40px; }
 .faq-cta p { margin-bottom: 14px; }
 
+/* ---- Video player ---- */
+.video-player { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: #000; }
+.video-player video { width: 100%; display: block; height: auto; }
+.walkthrough-info a { color: var(--teal-600); text-decoration: underline; }
+
 /* ---- Legal ---- */
 .legal h2 { font-size: 1.35rem; margin: 34px 0 12px; }
 .legal p, .legal li { color: var(--slate); }

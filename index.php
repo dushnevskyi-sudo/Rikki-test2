@@ -31,6 +31,12 @@ switch ($first) {
         $ref_code = $segments[1] ?? '';
         break;
 
+    case 'walkthrough':
+        // /walkthrough — video tutorial (hidden from nav)
+        $view = 'walkthrough';
+        $page_title = 'How It Works — ' . $COMPANY['name'];
+        break;
+
     case '':
         $view = 'home';
         break;
