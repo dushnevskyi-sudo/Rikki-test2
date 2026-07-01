@@ -276,6 +276,11 @@ label { display: block; font-family: var(--display); font-weight: 500; font-size
 /* ---- Track ---- */
 .track-form { display: flex; gap: 12px; margin-bottom: 34px; }
 .track-form input { flex: 1; }
+.track-empty { text-align: center; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 48px 30px; box-shadow: var(--shadow-sm); }
+.track-empty__icon { display: inline-grid; place-items: center; width: 72px; height: 72px; border-radius: 18px; background: rgba(245,165,36,.12); color: var(--amber); margin-bottom: 20px; }
+.track-empty h2 { margin-bottom: 12px; }
+.track-empty p { max-width: 46ch; margin: 0 auto 8px; }
+.track-empty a { color: var(--teal-600); text-decoration: underline; }
 .track-result { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow-sm); }
 .track-result__head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 22px; border-bottom: 1px solid var(--line); margin-bottom: 26px; }
 .track-result__head span.muted { display: block; font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; }

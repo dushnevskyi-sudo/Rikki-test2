@@ -19,13 +19,14 @@
                 <span class="logo__text"><?= e($COMPANY['brand']) ?><b>.</b></span>
             </a>
             <p><?= e($COMPANY['slogan']) ?></p>
-            <div class="social">
-                <?php foreach ($COMPANY['social'] as $network => $link): ?>
-                    <?php if ($link !== ''): ?>
+            <?php $social_links = array_filter($COMPANY['social']); ?>
+            <?php if (!empty($social_links)): ?>
+                <div class="social">
+                    <?php foreach ($social_links as $network => $link): ?>
                         <a href="<?= e($link) ?>" aria-label="<?= e(ucfirst($network)) ?>" target="_blank" rel="noopener"><?= e(strtoupper(substr($network, 0, 1))) ?></a>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         </div>
 
         <div class="footer__col">

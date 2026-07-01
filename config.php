@@ -43,13 +43,8 @@ $COMPANY = [
     'hours'       => 'Mon – Fri: 8:00 AM – 6:00 PM',
     'hours_note'  => '24/7 shipment tracking & emergency support',
 
-    // ----- Social media (leave blank '' to hide) -----
-    'social' => [
-        'facebook'  => 'https://facebook.com/',
-        'linkedin'  => 'https://linkedin.com/',
-        'twitter'   => 'https://x.com/',
-        'instagram' => 'https://instagram.com/',
-    ],
+    // ----- Social media (add 'network' => 'https://…' to show icons) -----
+    'social' => [],
 ];
 
 // ---------------------------------------------------------------------

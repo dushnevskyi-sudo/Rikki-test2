@@ -1,12 +1,7 @@
 <?php
-/** Track shipment page — demo tracking with a deterministic mock status. */
+/** Track shipment page. */
 $ref = trim($_GET['ref'] ?? '');
-$statuses = ['Picked up', 'In transit', 'At customs', 'Out for delivery', 'Delivered'];
-$has_result = $ref !== '';
-if ($has_result) {
-    // Deterministic pseudo-status based on the reference, for a realistic demo.
-    $step = abs(crc32($ref)) % count($statuses);
-}
+$searched = $ref !== '';
 ?>
 
 <section class="page-hero">
@@ -24,24 +19,12 @@ if ($has_result) {
             <button class="btn btn--primary" type="submit">Track <?= icon('arrow', 18) ?></button>
         </form>
 
-        <?php if ($has_result): ?>
-            <div class="track-result reveal">
-                <div class="track-result__head">
-                    <div>
-                        <span class="muted">Reference</span>
-                        <strong><?= e(strtoupper($ref)) ?></strong>
-                    </div>
-                    <span class="badge badge--<?= $step === count($statuses) - 1 ? 'green' : 'blue' ?>"><?= e($statuses[$step]) ?></span>
-                </div>
-                <ol class="timeline">
-                    <?php foreach ($statuses as $i => $st): ?>
-                        <li class="<?= $i <= $step ? 'is-done' : '' ?> <?= $i === $step ? 'is-current' : '' ?>">
-                            <span class="timeline__dot"><?= $i <= $step ? icon('check', 14) : '' ?></span>
-                            <span class="timeline__label"><?= e($st) ?></span>
-                        </li>
-                    <?php endforeach; ?>
-                </ol>
-                <p class="muted track-result__note">This is a demonstration status. Connect your carrier or TMS API in <code>pages/track.php</code> to show live data.</p>
+        <?php if ($searched): ?>
+            <div class="track-empty reveal">
+                <span class="track-empty__icon"><?= icon('shield', 30) ?></span>
+                <h2>Tracking number not found</h2>
+                <p>We couldn't find a shipment matching <strong><?= e(strtoupper($ref)) ?></strong>. Please double-check the reference number and try again.</p>
+                <p class="muted">Still need help? <a href="<?= url('/contact') ?>">Contact our support team</a> and we'll locate your shipment.</p>
             </div>
         <?php endif; ?>
     </div>
