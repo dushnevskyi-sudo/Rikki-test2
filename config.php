@@ -83,7 +83,7 @@ $SERVICES = [
         'title'   => 'Ocean Freight',
         'icon'    => 'ship',
         'excerpt' => 'Cost-effective FCL & LCL sea shipping across every major trade lane.',
-        'image'   => 'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1200&q=80',
+        'image'   => '/assets/images/ocean-freight.jpg',
         'intro'   => 'Move large volumes at the best cost per unit with our global ocean network. We handle full-container (FCL) and less-than-container (LCL) loads with real-time visibility from port to port.',
         'features' => [
             'FCL & LCL consolidation on all major lanes',
@@ -96,7 +96,7 @@ $SERVICES = [
         'title'   => 'Air Freight',
         'icon'    => 'plane',
         'excerpt' => 'Time-critical air cargo with priority space on trusted carriers.',
-        'image'   => 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80',
+        'image'   => '/assets/images/air-freight.jpg',
         'intro'   => 'When speed matters most, our air freight desk secures priority capacity worldwide, clears customs fast and keeps your urgent cargo moving.',
         'features' => [
             'Next-flight-out and consolidated options',
@@ -109,7 +109,7 @@ $SERVICES = [
         'title'   => 'Rail Freight',
         'icon'    => 'train',
         'excerpt' => 'A greener, budget-friendly link between continents and hubs.',
-        'image'   => 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=80',
+        'image'   => '/assets/images/rail-freight.jpg',
         'intro'   => 'Rail balances cost and speed while cutting emissions. We connect inland hubs to seaports and cross-border corridors with scheduled block trains.',
         'features' => [
             'Intermodal rail-road-sea connections',
@@ -122,7 +122,7 @@ $SERVICES = [
         'title'   => 'Road Transport',
         'icon'    => 'truck',
         'excerpt' => 'Regional and cross-border trucking with full-load & LTL options.',
-        'image'   => 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1200&q=80',
+        'image'   => '/assets/images/road-transport.jpg',
         'intro'   => 'Our vetted carrier fleet covers first-mile pickup to final-mile delivery, with GPS-tracked FTL and LTL services across the region.',
         'features' => [
             'Full-truckload (FTL) & less-than-truckload (LTL)',
@@ -135,7 +135,7 @@ $SERVICES = [
         'title'   => 'Warehousing & Fulfillment',
         'icon'    => 'warehouse',
         'excerpt' => 'Smart storage, inventory control and order fulfillment at scale.',
-        'image'   => 'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=80',
+        'image'   => '/assets/images/warehousing.jpg',
         'intro'   => 'Store, pick, pack and ship from our strategically located distribution centers with real-time inventory dashboards and automated fulfillment.',
         'features' => [
             'Bonded & climate-controlled storage',
@@ -148,7 +148,7 @@ $SERVICES = [
         'title'   => 'Customs Brokerage',
         'icon'    => 'shield',
         'excerpt' => 'Clear customs faster with licensed, error-free documentation.',
-        'image'   => 'https://images.unsplash.com/photo-1568992687947-868a62a9f521?auto=format&fit=crop&w=1200&q=80',
+        'image'   => '/assets/images/customs-brokerage.jpg',
         'intro'   => 'Our licensed brokers manage duties, tariffs and compliance so your shipments clear borders without costly delays.',
         'features' => [
             'Licensed customs brokers in key ports',
@@ -183,9 +183,9 @@ $STEPS = [
 // 7. TESTIMONIALS
 // ---------------------------------------------------------------------
 $TESTIMONIALS = [
-    ['name' => 'Sarah Whitfield', 'role' => 'Ops Director, Meridian Retail', 'text' => 'Norvexa took over our cross-border freight and cut transit times by a third. Visibility is finally something we can trust.', 'avatar' => 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=200&q=80'],
-    ['name' => 'David Marno',     'role' => 'Founder, Cobalt Goods',        'text' => 'Their warehousing and fulfillment let us scale into three new markets without hiring a single logistics person. Superb team.', 'avatar' => 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80'],
-    ['name' => 'Elena Torres',    'role' => 'Supply Chain Lead, Aveline',    'text' => 'Customs used to be our biggest headache. With Norvexa brokers, clearance is fast and paperwork is flawless.', 'avatar' => 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80'],
+    ['name' => 'Sarah Whitfield', 'role' => 'Ops Director, Meridian Retail', 'text' => 'Norvexa took over our cross-border freight and cut transit times by a third. Visibility is finally something we can trust.', 'avatar' => '/assets/images/avatar-1.jpg'],
+    ['name' => 'David Marno',     'role' => 'Founder, Cobalt Goods',        'text' => 'Their warehousing and fulfillment let us scale into three new markets without hiring a single logistics person. Superb team.', 'avatar' => '/assets/images/avatar-2.jpg'],
+    ['name' => 'Elena Torres',    'role' => 'Supply Chain Lead, Aveline',    'text' => 'Customs used to be our biggest headache. With Norvexa brokers, clearance is fast and paperwork is flawless.', 'avatar' => '/assets/images/avatar-3.jpg'],
 ];
 
 // ---------------------------------------------------------------------

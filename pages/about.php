@@ -11,7 +11,7 @@
 <section class="section">
     <div class="container split">
         <div class="split__media reveal">
-            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=80" alt="Warehouse operations" loading="lazy">
+            <img src="<?= asset('images/warehouse-ops.jpg') ?>" alt="Warehouse operations" loading="lazy">
         </div>
         <div class="split__body reveal">
             <span class="eyebrow">Our story</span>

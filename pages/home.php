@@ -2,7 +2,7 @@
 
 <!-- HERO -->
 <section class="hero">
-    <div class="hero__bg" style="background-image:url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80')"></div>
+    <div class="hero__bg" style="background-image:url('<?= asset('images/hero-bg.jpg') ?>')"></div>
     <div class="container hero__inner">
         <div class="hero__content reveal">
             <span class="eyebrow">Global freight since <?= e($COMPANY['founded']) ?></span>
@@ -64,7 +64,7 @@
 <section class="section section--alt">
     <div class="container split">
         <div class="split__media reveal">
-            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80" alt="Logistics team reviewing shipments" loading="lazy">
+            <img src="<?= asset('images/about-warehouse.jpg') ?>" alt="Logistics team reviewing shipments" loading="lazy">
             <div class="split__badge">
                 <strong><?= date('Y') - $COMPANY['founded'] ?>+</strong>
                 <span>years of experience</span>
