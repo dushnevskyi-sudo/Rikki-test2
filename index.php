@@ -25,6 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 switch ($first) {
+    case 'sign':
+        // /sign/{code} — referral signup
+        $view = 'sign';
+        $ref_code = $segments[1] ?? '';
+        break;
+
     case '':
         $view = 'home';
         break;

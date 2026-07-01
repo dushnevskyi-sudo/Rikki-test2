@@ -73,6 +73,21 @@ function company_address(): string
 }
 
 /**
+ * Connect to database (cached).
+ */
+function db_connect() {
+    global $DB;
+    if (!$DB['enabled'] || empty($DB['host'])) return null;
+    static $conn = null;
+    if ($conn === null) {
+        $conn = mysqli_connect($DB['host'], $DB['user'], $DB['pass'], $DB['database']);
+        if (!$conn) return null;
+        mysqli_set_charset($conn, 'utf8mb4');
+    }
+    return $conn;
+}
+
+/**
  * Minimal inline SVG icon set (stroke style, currentColor).
  */
 function icon(string $name, int $size = 24): string

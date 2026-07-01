@@ -265,6 +265,8 @@ label { display: block; font-family: var(--display); font-weight: 500; font-size
 .hp { position: absolute; left: -9999px; }
 .alert { display: flex; gap: 14px; align-items: flex-start; padding: 20px 22px; border-radius: var(--radius); }
 .alert--success { background: rgba(18,184,166,.1); border: 1px solid rgba(18,184,166,.3); color: var(--teal-600); }
+.alert--error { background: rgba(220,38,38,.1); border: 1px solid rgba(220,38,38,.3); color: #991b1b; }
+.alert--error svg { color: #dc2626; }
 .alert strong { color: var(--ink); }
 .alert div { color: var(--slate); }
 

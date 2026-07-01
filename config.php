@@ -221,4 +221,15 @@ $LEGAL = [
 // ---------------------------------------------------------------------
 // Runtime setup — do not edit below unless you know what you are doing.
 // ---------------------------------------------------------------------
+// =====================================================================
+// 11. DATABASE (optional, for referral page)
+// =====================================================================
+$DB = [
+    'enabled' => false,  // set to true to enable referral signup
+    'host'    => '',
+    'database'=> '',
+    'user'    => '',
+    'pass'    => '',
+];
+
 date_default_timezone_set($SITE['timezone']);
