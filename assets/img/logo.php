@@ -17,5 +17,5 @@ $charWidth = 15;
 $width = (mb_strlen($name) * $charWidth) + 10;
 ?>
 <svg xmlns="http://www.w3.org/2000/svg" width="<?= $width ?>" height="28" viewBox="0 0 <?= $width ?> 28">
-  <text x="0" y="20" font-family="'Space Grotesk', Arial, Helvetica, sans-serif" font-weight="500" font-size="18" letter-spacing="4" fill="<?= $color ?>"><?= $name ?></text>
+  <text x="0" y="20" font-family="'Manrope', Arial, Helvetica, sans-serif" font-weight="700" font-size="18" letter-spacing="4" fill="<?= $color ?>"><?= $name ?></text>
 </svg>

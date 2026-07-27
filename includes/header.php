@@ -28,7 +28,7 @@ function nav_active($page, $current) {
 <meta name="description" content="<?= htmlspecialchars($pageDescription) ?>">
 <link rel="icon" type="image/svg+xml" href="<?= SITE_FAVICON ?>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;500;700;800&display=swap">
 <link rel="stylesheet" href="/assets/css/style.css">
 <style>
   :root {
