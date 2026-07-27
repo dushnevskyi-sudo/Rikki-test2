@@ -26,10 +26,11 @@ define('SITE_LOGO',         '/assets/img/logo.php');        // Dark logo (light 
 define('SITE_LOGO_WHITE',   '/assets/img/logo.php?white=1'); // White logo (dark/hero backgrounds)
 define('SITE_FAVICON',      '/assets/img/favicon.php');
 
-define('SITE_COLOR_PRIMARY',      '#2455FF'); // Main brand color (buttons, links, accents)
-define('SITE_COLOR_PRIMARY_DARK', '#13309B'); // Hover / darker shade of primary
-define('SITE_COLOR_ACCENT',       '#00D6B4'); // Secondary accent color
-define('SITE_COLOR_DARK',         '#0B0F1E'); // Dark section backgrounds (hero, footer band)
+define('SITE_COLOR_PRIMARY',      '#E91E8C'); // Main brand color (CTA buttons, links, accents)
+define('SITE_COLOR_PRIMARY_DARK', '#B0136A'); // Hover / darker shade of primary
+define('SITE_COLOR_ACCENT',       '#8B2FE8'); // Secondary accent color (icon badges)
+define('SITE_COLOR_DARK',         '#1A0B2E'); // Dark section base (hero/footer background)
+define('SITE_COLOR_DARK_ALT',     '#7A1FA8'); // Brighter glow color for hero/dark gradients
 define('SITE_COLOR_GRAY',         '#5B6472'); // Body copy gray
 
 // ---------------------------------------------------------

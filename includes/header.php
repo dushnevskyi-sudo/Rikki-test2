@@ -27,6 +27,8 @@ function nav_active($page, $current) {
 <title><?= htmlspecialchars($fullTitle) ?></title>
 <meta name="description" content="<?= htmlspecialchars($pageDescription) ?>">
 <link rel="icon" type="image/svg+xml" href="<?= SITE_FAVICON ?>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap">
 <link rel="stylesheet" href="/assets/css/style.css">
 <style>
   :root {
@@ -34,6 +36,7 @@ function nav_active($page, $current) {
     --color-primary-dark: <?= SITE_COLOR_PRIMARY_DARK ?>;
     --color-accent: <?= SITE_COLOR_ACCENT ?>;
     --color-dark: <?= SITE_COLOR_DARK ?>;
+    --color-dark-alt: <?= SITE_COLOR_DARK_ALT ?>;
     --color-gray: <?= SITE_COLOR_GRAY ?>;
   }
 </style>

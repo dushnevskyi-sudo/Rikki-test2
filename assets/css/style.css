@@ -12,7 +12,7 @@ body {
 img { max-width: 100%; display: block; }
 a { color: var(--color-primary); text-decoration: none; }
 a:hover { text-decoration: underline; }
-h1, h2, h3, h4 { margin: 0; line-height: 1.2; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.2; font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
 p { margin: 0; }
 ul { margin: 0; padding: 0; list-style: none; }
 
@@ -93,15 +93,18 @@ ul { margin: 0; padding: 0; list-style: none; }
    Hero
    ========================================================= */
 .hero {
-  background: linear-gradient(160deg, var(--color-dark) 0%, var(--color-primary-dark) 100%);
+  background: radial-gradient(ellipse 900px 600px at 50% 0%, var(--color-dark-alt) 0%, var(--color-dark) 65%);
   padding: 160px 0 90px;
   color: #fff;
   text-align: center;
 }
 .hero__title {
-  font-size: 42px;
-  font-weight: 800;
-  margin-bottom: 14px;
+  font-size: 52px;
+  font-weight: 300;
+  letter-spacing: .3em;
+  text-indent: .3em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 .hero__subtitle {
   font-size: 21px;
@@ -113,12 +116,12 @@ ul { margin: 0; padding: 0; list-style: none; }
 .hero__cta { margin-top: 32px; }
 
 .page-hero {
-  background: linear-gradient(160deg, var(--color-dark) 0%, var(--color-primary-dark) 100%);
+  background: radial-gradient(ellipse 900px 600px at 50% 0%, var(--color-dark-alt) 0%, var(--color-dark) 65%);
   color: #fff;
   padding: 130px 0 60px;
   text-align: center;
 }
-.page-hero h1 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+.page-hero h1 { font-size: 36px; font-weight: 700; margin-bottom: 12px; }
 .page-hero p { font-size: 18px; color: rgba(255,255,255,.85); max-width: 620px; margin: 0 auto; }
 
 /* =========================================================
@@ -150,7 +153,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   letter-spacing: .04em;
   text-transform: uppercase;
   color: var(--color-primary);
-  background: rgba(36,85,255,.08);
+  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
   padding: 4px 10px;
   border-radius: 20px;
   margin-bottom: 12px;
@@ -160,6 +163,42 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 @media (max-width: 700px) {
   .promo-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   Price ticker
+   ========================================================= */
+.price-ticker {
+  background: #F7F8FB;
+  padding: 30px 0;
+}
+.ticker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.ticker-item {
+  text-align: center;
+  padding: 0 20px;
+  border-right: 1px solid #E4E7EE;
+}
+.ticker-item:last-child { border-right: none; }
+.ticker-item .symbol-badge {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; font-size: 14px;
+}
+.ticker-item .ticker-label { font-size: 13px; font-weight: 600; color: var(--color-gray); margin-bottom: 8px; }
+.ticker-item .sparkline { height: 36px; margin-bottom: 8px; }
+.ticker-item .ticker-price { font-size: 20px; font-weight: 700; }
+.ticker-item .ticker-change { font-size: 13px; color: #1BA672; }
+.ticker-item .ticker-change.down { color: #E5484D; }
+
+@media (max-width: 700px) {
+  .ticker-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 0; }
+  .ticker-item:nth-child(2) { border-right: none; }
+  .ticker-item { border-bottom: 1px solid #E4E7EE; padding-bottom: 20px; }
 }
 
 /* =========================================================
@@ -175,9 +214,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   gap: 40px;
 }
 .value-item .icon {
-  width: 56px; height: 56px;
-  border-radius: 14px;
-  background: rgba(36,85,255,.08);
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-accent) 14%, transparent);
   display: flex; align-items: center; justify-content: center;
   margin: 0 auto 18px;
 }
@@ -192,7 +231,7 @@ ul { margin: 0; padding: 0; list-style: none; }
    Previously / project list (dark section)
    ========================================================= */
 .previous-section {
-  background: var(--color-dark);
+  background: linear-gradient(160deg, var(--color-dark-alt) 0%, var(--color-dark) 75%);
   color: #fff;
   padding: 80px 0;
   text-align: center;
@@ -211,7 +250,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .project-row:hover { background: rgba(255,255,255,.03); text-decoration: none; }
 .project-row .mark {
   width: 40px; height: 40px;
-  border-radius: 10px;
+  border-radius: 50%;
   flex: 0 0 auto;
   display: flex; align-items: center; justify-content: center;
   font-weight: 700;
@@ -227,7 +266,7 @@ ul { margin: 0; padding: 0; list-style: none; }
    Lower CTA
    ========================================================= */
 .lower-cta {
-  background: linear-gradient(160deg, var(--color-primary-dark) 0%, var(--color-dark) 100%);
+  background: linear-gradient(200deg, var(--color-dark) 0%, var(--color-dark-alt) 100%);
   color: #fff;
   text-align: center;
   padding: 90px 0;
@@ -331,7 +370,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* =========================================================
    Footer
    ========================================================= */
-.site-footer { background: #10162B; color: rgba(255,255,255,.8); padding: 50px 0 30px; }
+.site-footer { background: var(--color-dark); color: rgba(255,255,255,.8); padding: 50px 0 30px; }
 .footer-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
 .footer-links a { color: rgba(255,255,255,.75); font-size: 14px; }
