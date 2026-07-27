@@ -93,7 +93,10 @@ ul { margin: 0; padding: 0; list-style: none; }
    Hero
    ========================================================= */
 .hero {
-  background: radial-gradient(ellipse 900px 600px at 50% 0%, var(--color-dark-alt) 0%, var(--color-dark) 65%);
+  background:
+    radial-gradient(ellipse 1000px 620px at 50% -10%, color-mix(in srgb, var(--color-primary) 55%, var(--color-dark-alt)) 0%, transparent 60%),
+    radial-gradient(ellipse 900px 700px at 15% 10%, var(--color-dark-alt) 0%, transparent 55%),
+    linear-gradient(150deg, var(--color-dark-alt) 0%, var(--color-dark) 60%, #0d0518 100%);
   padding: 160px 0 90px;
   color: #fff;
   text-align: center;
@@ -116,7 +119,10 @@ ul { margin: 0; padding: 0; list-style: none; }
 .hero__cta { margin-top: 32px; }
 
 .page-hero {
-  background: radial-gradient(ellipse 900px 600px at 50% 0%, var(--color-dark-alt) 0%, var(--color-dark) 65%);
+  background:
+    radial-gradient(ellipse 1000px 620px at 50% -10%, color-mix(in srgb, var(--color-primary) 55%, var(--color-dark-alt)) 0%, transparent 60%),
+    radial-gradient(ellipse 900px 700px at 15% 10%, var(--color-dark-alt) 0%, transparent 55%),
+    linear-gradient(150deg, var(--color-dark-alt) 0%, var(--color-dark) 60%, #0d0518 100%);
   color: #fff;
   padding: 130px 0 60px;
   text-align: center;

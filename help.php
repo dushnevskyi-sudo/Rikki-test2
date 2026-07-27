@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/config.php';
 $pageTitle = 'Help Center';
+$headerTransparent = true;
 require __DIR__ . '/includes/header.php';
 
 $faqs = [

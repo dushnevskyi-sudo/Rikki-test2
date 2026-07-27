@@ -2,6 +2,7 @@
 require_once __DIR__ . '/config.php';
 $pageTitle = 'For Developers';
 $pageDescription = 'Build on the ' . SITE_SHORT_NAME . ' API — market data, trading and account endpoints.';
+$headerTransparent = true;
 require __DIR__ . '/includes/header.php';
 ?>
 

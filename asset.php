@@ -18,6 +18,7 @@ if (!$project) {
 
 $pageTitle = $project['name'] . ' (' . $project['ticker'] . ')';
 $pageDescription = $project['tagline'];
+$headerTransparent = true;
 require __DIR__ . '/includes/header.php';
 ?>
 

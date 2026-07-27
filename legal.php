@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/config.php';
 $pageTitle = 'Legal & Risk Disclosures';
+$headerTransparent = true;
 require __DIR__ . '/includes/header.php';
 ?>
 

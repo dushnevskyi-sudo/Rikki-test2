@@ -2,6 +2,7 @@
 require_once __DIR__ . '/config.php';
 $pageTitle = 'For Companies';
 $pageDescription = 'List your token or digital asset on ' . SITE_SHORT_NAME . ' and reach thousands of vetted investors.';
+$headerTransparent = true;
 require __DIR__ . '/includes/header.php';
 ?>
 
