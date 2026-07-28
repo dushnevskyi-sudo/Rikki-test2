@@ -5,7 +5,7 @@
       <div class="footer-links">
         <a href="/jobs.php">Jobs</a>
         <a href="/help.php">Help</a>
-        <a href="mailto:<?= htmlspecialchars(SITE_EMAIL_SUPPORT) ?>">Contact</a>
+        <a href="/contact.php">Contact</a>
         <a href="/privacy.php">Privacy</a>
         <a href="/terms.php">Terms</a>
         <a href="/legal.php">Legal</a>
